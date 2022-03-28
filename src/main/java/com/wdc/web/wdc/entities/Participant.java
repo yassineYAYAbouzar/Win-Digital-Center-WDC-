@@ -29,7 +29,9 @@ public class Participant extends User implements Serializable {
         this.domaine = domaine;
     }
 
-    public Participant(String nom, String prenom, String password, String email, String telephone, Boolean etat) {
+    public Participant(String nom, String prenom, String password, String email, String telephone, Boolean etat,String domaine,String structure) {
         super(nom, prenom, password, email, telephone, etat);
+        this.domaine = domaine;
+        this.structure = structure;
     }
 }

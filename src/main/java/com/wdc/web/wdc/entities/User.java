@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -46,6 +48,13 @@ public abstract class User implements Serializable {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_authorities",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "authorities_id")}
+    )
+    private List<Authorities> authoritiesList= new ArrayList<>();
 
     public User() {
 

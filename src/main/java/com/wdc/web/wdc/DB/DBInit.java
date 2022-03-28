@@ -1,9 +1,8 @@
 package com.wdc.web.wdc.DB;
 
+import com.wdc.web.wdc.entities.Participant;
 import com.wdc.web.wdc.entities.Responsable;
-import com.wdc.web.wdc.repositories.ResponsableRepository;
-import com.wdc.web.wdc.repositories.RoleRepository;
-import com.wdc.web.wdc.repositories.UserRepository;
+import com.wdc.web.wdc.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,13 +15,17 @@ public class DBInit implements CommandLineRunner {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final ResponsableRepository responsableRepository;
+    private final ParticipantRepository participantRepository;
+    private final AuthoritiesRepository authoritiesRepository;
 
     @Autowired
-    public DBInit(PasswordEncoder passwordEncoder, UserRepository userRepository, RoleRepository roleRepository, ResponsableRepository responsableRepository) {
+    public DBInit(PasswordEncoder passwordEncoder, UserRepository userRepository, RoleRepository roleRepository, ResponsableRepository responsableRepository, ParticipantRepository participantRepository, AuthoritiesRepository authoritiesRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.responsableRepository = responsableRepository;
+        this.participantRepository = participantRepository;
+        this.authoritiesRepository = authoritiesRepository;
     }
 
     @Override
@@ -32,11 +35,15 @@ public class DBInit implements CommandLineRunner {
 
         Responsable admin = new Responsable("yassine","yassine",passwordEncoder.encode("password"),"email@email.com","6666", true,"domaine");
 
-        admin.setRole(this.roleRepository.findById(1l).get());
-        //admin.setAuthoritiesList(this.authoritiesRepository.findAll() );
+        admin.setRole(roleRepository.findById(1l).get());
+        admin.setAuthoritiesList(authoritiesRepository.findAll());
         responsableRepository.save(admin);
 
+        Participant participant = new Participant("hamza","hamza",passwordEncoder.encode("password"),"email@email.com","6666", true,"domaine","domaine");
 
+        participant.setRole(roleRepository.findById(3l).get());
+        admin.setAuthoritiesList(authoritiesRepository.findAll() );
+        participantRepository.save(participant);
 
 
     }
