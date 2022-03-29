@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "user_table")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User implements Serializable {
+public class User implements Serializable {
 
     public User(String nom, String prenom, String password, String email, String telephone, Boolean etat) {
         this.nom = nom;

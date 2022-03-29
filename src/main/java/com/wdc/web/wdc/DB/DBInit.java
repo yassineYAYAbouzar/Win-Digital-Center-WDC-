@@ -1,12 +1,16 @@
 package com.wdc.web.wdc.DB;
 
+import com.wdc.web.wdc.entities.Authorities;
 import com.wdc.web.wdc.entities.Participant;
 import com.wdc.web.wdc.entities.Responsable;
+import com.wdc.web.wdc.entities.User;
 import com.wdc.web.wdc.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class DBInit implements CommandLineRunner {
@@ -45,6 +49,18 @@ public class DBInit implements CommandLineRunner {
         admin.setAuthoritiesList(authoritiesRepository.findAll() );
         participantRepository.save(participant);
 
+*/
+/*
+      User admin = new User("yassine","bouzar",passwordEncoder.encode("password"),"yassine@email.com","6666", true);
+
+        admin.setRole(roleRepository.findById(1l).get());
+        admin.getAuthoritiesList().add(authoritiesRepository.findById(1L).get());
+        admin.getAuthoritiesList().add(authoritiesRepository.findById(2L).get());
+        admin.getAuthoritiesList().add(authoritiesRepository.findById(3L).get());
+        admin.getAuthoritiesList().add(authoritiesRepository.findById(4L).get());
+        admin.getAuthoritiesList().add(authoritiesRepository.findById(5L).get());
+        admin.getAuthoritiesList().add(authoritiesRepository.findById(6L).get());
+        userRepository.save(admin);
 */
     }
 
