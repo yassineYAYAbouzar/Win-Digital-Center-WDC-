@@ -3,6 +3,7 @@ package com.wdc.web.wdc.security;
 import com.wdc.web.wdc.jwt.JwtTokenVerifier;
 import com.wdc.web.wdc.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import com.wdc.web.wdc.services.UserPrincipalService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +42,8 @@ public class ConfigurationApp extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/api/main").permitAll()
                 .mvcMatchers("/login").permitAll()
                 .mvcMatchers("/api/profile/").authenticated()
-                .mvcMatchers("/api/admin/").hasRole("ADMIN")
+                .mvcMatchers("/api/v1/admin/responsableList").hasRole("ADMIN")
+                .mvcMatchers("/api/v1/admin/insertResponsable").hasRole("ADMIN")
                 .mvcMatchers("/api/management/").hasAnyRole("ADMIN","PARTICIPANT")
                 .anyRequest()
                 .authenticated();
@@ -49,6 +51,10 @@ public class ConfigurationApp extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+    @Bean
+    ModelMapper modelMapper(){
+        return new ModelMapper();
     }
 
     @Bean

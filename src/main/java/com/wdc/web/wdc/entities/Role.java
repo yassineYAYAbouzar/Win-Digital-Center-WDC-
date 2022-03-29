@@ -26,7 +26,16 @@ public class Role implements Serializable {
 
     @Column(name = "active", nullable = false)
     private Boolean active;
-    @OneToMany(mappedBy = "role" ,cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "role" ,cascade = CascadeType.REMOVE ,fetch = FetchType.LAZY)
     Set<User> users = new HashSet<>();
 
+    public Role(String name, String description, Boolean active) {
+        this.name = name;
+        this.description = description;
+        this.active = active;
+    }
+
+    public Role() {
+
+    }
 }
