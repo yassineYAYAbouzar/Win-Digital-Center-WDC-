@@ -32,7 +32,7 @@ public class DBInit implements CommandLineRunner {
     public void run(String... args) throws Exception {
       //  User user = userRepository.findByUserName("yassine");
        // System.out.println(user.getRole());
-
+/*
         Responsable admin = new Responsable("yassine","yassine",passwordEncoder.encode("password"),"email@email.com","6666", true,"domaine");
 
         admin.setRole(roleRepository.findById(1l).get());
@@ -45,7 +45,7 @@ public class DBInit implements CommandLineRunner {
         admin.setAuthoritiesList(authoritiesRepository.findAll() );
         participantRepository.save(participant);
 
-
+*/
     }
 
 

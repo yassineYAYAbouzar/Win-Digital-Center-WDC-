@@ -1,5 +1,7 @@
 package com.wdc.web.wdc.security;
 
+import com.wdc.web.wdc.jwt.JwtTokenVerifier;
+import com.wdc.web.wdc.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import com.wdc.web.wdc.services.UserPrincipalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -28,7 +31,20 @@ public class ConfigurationApp extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic();
+        http
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
+                .addFilterAfter(new JwtTokenVerifier(),JwtUsernameAndPasswordAuthenticationFilter.class)
+                .authorizeHttpRequests()
+                .mvcMatchers("/api/main").permitAll()
+                .mvcMatchers("/login").permitAll()
+                .mvcMatchers("/api/profile/").authenticated()
+                .mvcMatchers("/api/admin/").hasRole("ADMIN")
+                .mvcMatchers("/api/management/").hasAnyRole("ADMIN","PARTICIPANT")
+                .anyRequest()
+                .authenticated();
     }
     @Bean
     PasswordEncoder passwordEncoder(){
