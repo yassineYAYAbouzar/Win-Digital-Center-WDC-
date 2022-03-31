@@ -37,7 +37,7 @@ pipeline{
 		stage('run containers') {
 
 			steps {
-				sh 'docker run -d -p 8081:8081 yassinebouzar/wdc:latest'
+				sh 'docker-compose up -d'
 			}
 		}
 	}
