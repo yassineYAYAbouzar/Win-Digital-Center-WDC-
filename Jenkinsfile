@@ -6,12 +6,7 @@ pipeline{
 	}
 
 	stages {
-		stage('run containers') {
 
-			steps {
-				sh 'docker-compose up -d'
-			}
-		}
 		stage('clean') {
 
 			steps {
@@ -39,7 +34,12 @@ pipeline{
 				sh 'docker push yassinebouzar/wdc:latest'
 			}
 		}
+		stage('run containers') {
 
+			steps {
+				sh 'docker run -d -p 8081:8081 yassinebouzar/wdc:latest'
+			}
+		}
 	}
 
 	post {
