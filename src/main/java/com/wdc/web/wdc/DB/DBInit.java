@@ -51,6 +51,7 @@ public class DBInit implements CommandLineRunner {
 
 */
 /*
+lls
       User admin = new User("yassine","bouzar",passwordEncoder.encode("password"),"yassine@email.com","6666", true);
 
         admin.setRole(roleRepository.findById(1l).get());
