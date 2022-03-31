@@ -1,5 +1,7 @@
 package com.wdc.web.wdc.Request;
 
+import com.wdc.web.wdc.entities.TypeActivity;
+import com.wdc.web.wdc.entities.TypeResponsable;
 import lombok.*;
 
 @Getter
@@ -15,4 +17,5 @@ public class ResponsableRequest {
     private String telephone;
     private boolean etat;
     private String domaine;
+    private String typeResponsable;
 }

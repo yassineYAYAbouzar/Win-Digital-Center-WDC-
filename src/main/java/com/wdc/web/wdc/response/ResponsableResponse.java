@@ -18,4 +18,5 @@ public class ResponsableResponse {
     private String telephone;
 
     private Boolean etat;
+    private String typeResponsable;
 }

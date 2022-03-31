@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TypeResponsableRepository extends JpaRepository<TypeResponsable, Long>, JpaSpecificationExecutor<TypeResponsable> {
+public interface TypeResponsableRepository extends JpaRepository<TypeResponsable, Long> {
 
 }

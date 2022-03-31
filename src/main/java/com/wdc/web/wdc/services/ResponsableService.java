@@ -2,9 +2,11 @@ package com.wdc.web.wdc.services;
 
 import com.wdc.web.wdc.Request.ResponsableRequest;
 import com.wdc.web.wdc.entities.Responsable;
+import com.wdc.web.wdc.entities.TypeResponsable;
 import com.wdc.web.wdc.repositories.AuthoritiesRepository;
 import com.wdc.web.wdc.repositories.ResponsableRepository;
 import com.wdc.web.wdc.repositories.RoleRepository;
+import com.wdc.web.wdc.repositories.TypeResponsableRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,12 +24,14 @@ public class ResponsableService {
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
     private final AuthoritiesRepository authoritiesRepository;
-    public ResponsableService(ResponsableRepository responsableRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, AuthoritiesRepository authoritiesRepository) {
+    private final TypeResponsableRepository typeResponsableRepository;
+    public ResponsableService(ResponsableRepository responsableRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, AuthoritiesRepository authoritiesRepository, TypeResponsableRepository typeResponsableRepository) {
         this.responsableRepository = responsableRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
         this.authoritiesRepository = authoritiesRepository;
+        this.typeResponsableRepository = typeResponsableRepository;
     }
     public List<Responsable> getAllResponsable(int page, int limit) {
 
@@ -66,9 +70,12 @@ public class ResponsableService {
         responsable.getAuthoritiesList().add(authoritiesRepository.findById(11L).get());
         responsable.getAuthoritiesList().add(authoritiesRepository.findById(12L).get());
 
+        TypeResponsable typeResponsable = new TypeResponsable();
+        typeResponsable.setName(responsableRequest.getTypeResponsable());
+        responsable.setIdTypeResponsable(typeResponsable);
+
         responsable.setRole(roleRepository.findById(2l).get());
         responsableRepository.save(responsable);
-
 
         return responsable;
     }

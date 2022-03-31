@@ -48,6 +48,7 @@ public class AdminController {
     @PostMapping("insertResponsable")
     public ResponseEntity<ResponsableResponse> createUser(@RequestBody ResponsableRequest responsableRequest) throws Exception {
         ResponsableResponse responsableResponse = modelMapper.map(responsableService.createResponsable(responsableRequest) ,ResponsableResponse.class);
+        responsableResponse.setTypeResponsable(responsableRequest.getTypeResponsable());
         return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.CREATED) ;
     }
 
