@@ -1,0 +1,14 @@
+version: "3"
+services:
+  mydb:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=WDSDBP
+  application:
+    build: .
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mydb
