@@ -1,13 +1,10 @@
 package com.wdc.web.wdc.DB;
 
-import com.wdc.web.wdc.entities.*;
 import com.wdc.web.wdc.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class DBInit implements CommandLineRunner {

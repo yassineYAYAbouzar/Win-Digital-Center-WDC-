@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,7 +47,7 @@ public class AdminController {
     }
 
     @PostMapping("insertResponsable")
-    public ResponseEntity<ResponsableResponse> createUser(@RequestBody ResponsableRequest responsableRequest) throws Exception {
+    public ResponseEntity<ResponsableResponse> createUser(@RequestBody @Valid ResponsableRequest responsableRequest) throws Exception {
         ResponsableResponse responsableResponse = modelMapper.map(responsableService.createResponsable(responsableRequest) ,ResponsableResponse.class);
         responsableResponse.setTypeResponsable(responsableRequest.getTypeResponsable());
         return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.CREATED) ;

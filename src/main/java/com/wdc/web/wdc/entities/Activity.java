@@ -2,10 +2,7 @@ package com.wdc.web.wdc.entities;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -38,7 +35,8 @@ public class Activity implements Serializable {
     @Column(name = "id_exercise", nullable = false)
     private Long idExercise;
 
-    @Column(name = "id_type_activity")
-    private Long idTypeActivity;
+
+    @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    private TypeActivity idTypeActivity;
 
 }

@@ -1,8 +1,11 @@
 package com.wdc.web.wdc.Request;
 
-import com.wdc.web.wdc.entities.TypeActivity;
-import com.wdc.web.wdc.entities.TypeResponsable;
 import lombok.*;
+
+import javax.validation.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Getter
 @Setter
@@ -10,12 +13,26 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class ResponsableRequest {
+    @NotNull
+    @Size(min =3)
     private String nom;
+    @NotNull
+    @Size(min =3)
     private String prenom;
+    @NotNull
+    @Size(min = 8 , max=12)
     private String password;
+    @NotNull
     private String email;
+    @NotNull
+    @Size(min = 8 , max=12)
     private String telephone;
-    private boolean etat;
+    private boolean etat = true;
+    @NotNull
+    @Size(min =3)
     private String domaine;
+    @NotNull
+    @Size(min =3)
+    private String structure;
     private String typeResponsable;
 }

@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/auth")
 public class AuthController {
@@ -31,7 +33,7 @@ public class AuthController {
 
 
     @PostMapping("register")
-    public ResponseEntity<ParticipantResponse> createParticipant(@RequestBody ParticipantRequest participantRequest) throws Exception {
+    public ResponseEntity<ParticipantResponse> createParticipant(@RequestBody @Valid ParticipantRequest participantRequest) throws Exception {
         ParticipantResponse participantResponse = modelMapper.map(participantService.createParticipant(participantRequest) ,ParticipantResponse.class);
         return new ResponseEntity<ParticipantResponse>( participantResponse , HttpStatus.CREATED) ;
     }

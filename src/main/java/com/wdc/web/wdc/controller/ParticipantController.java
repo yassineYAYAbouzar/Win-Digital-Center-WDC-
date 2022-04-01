@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class ParticipantController {
     }
 
     @PostMapping("insertparticipant")
-    public ResponseEntity<ParticipantResponse> createParticipant(@RequestBody ParticipantRequest participantRequest) throws Exception {
+    public ResponseEntity<ParticipantResponse> createParticipant(@RequestBody @Valid ParticipantRequest participantRequest) throws Exception {
         ParticipantResponse participantResponse = modelMapper.map(participantService.createParticipant(participantRequest) ,ParticipantResponse.class);
         return new ResponseEntity<ParticipantResponse>( participantResponse , HttpStatus.CREATED) ;
     }
