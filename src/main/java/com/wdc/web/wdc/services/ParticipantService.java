@@ -70,7 +70,7 @@ public class ParticipantService {
         participant.getAuthoritiesList().add(authoritiesRepository.findById(4L).get());
 
 
-        participant.setRole(roleRepository.findById(2l).get());
+        participant.setRole(roleRepository.findById(3l).get());
         participantRepository.save(participant);
 
         return participant;
