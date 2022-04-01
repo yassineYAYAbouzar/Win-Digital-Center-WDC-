@@ -22,4 +22,8 @@ public class Authorities {
     private String authoritiesName;
     @ManyToMany(mappedBy = "authoritiesList")
     private List<User> userList = new ArrayList<>();
+
+    public Authorities(String authoritiesName) {
+        this.authoritiesName = authoritiesName;
+    }
 }

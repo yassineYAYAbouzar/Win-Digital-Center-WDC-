@@ -1,9 +1,6 @@
 package com.wdc.web.wdc.DB;
 
-import com.wdc.web.wdc.entities.Authorities;
-import com.wdc.web.wdc.entities.Participant;
-import com.wdc.web.wdc.entities.Responsable;
-import com.wdc.web.wdc.entities.User;
+import com.wdc.web.wdc.entities.*;
 import com.wdc.web.wdc.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -34,24 +31,25 @@ public class DBInit implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-      //  User user = userRepository.findByUserName("yassine");
-       // System.out.println(user.getRole());
+
 /*
-        Responsable admin = new Responsable("yassine","yassine",passwordEncoder.encode("password"),"email@email.com","6666", true,"domaine");
+        authoritiesRepository.save(new Authorities("CREATE_RESPONSABLE"));
+        authoritiesRepository.save(new Authorities("UPDATE_RESPONSABLE"));
+        authoritiesRepository.save(new Authorities("READ_ACTIVITY"));
+        authoritiesRepository.save(new Authorities("READ_PARTICIPANTS"));
+        authoritiesRepository.save(new Authorities("UPDATE_PARTICIPANTS"));
+        authoritiesRepository.save(new Authorities("CREATE_ACTIVITY"));
+        authoritiesRepository.save(new Authorities("UPDATE_ACTIVITY"));
+        authoritiesRepository.save(new Authorities("DELETE_ACTIVITY"));
+        authoritiesRepository.save(new Authorities("CREATE_EXERCISE"));
+        authoritiesRepository.save(new Authorities("UPDATE_EXERCISE"));
+        authoritiesRepository.save(new Authorities("DELETE_EXERCISE"));
+        authoritiesRepository.save(new Authorities("DELETE_EXERCISE"));
 
-        admin.setRole(roleRepository.findById(1l).get());
-        admin.setAuthoritiesList(authoritiesRepository.findAll());
-        responsableRepository.save(admin);
+        roleRepository.save(new Role("ADMIN","ADMINISTRATEUR",true));
+        roleRepository.save(new Role("RESPONSABLE","RESPONSABLE",true));
+        roleRepository.save(new Role("PARTICIPANT","PARTICIPANT",true));
 
-        Participant participant = new Participant("hamza","hamza",passwordEncoder.encode("password"),"email@email.com","6666", true,"domaine","domaine");
-
-        participant.setRole(roleRepository.findById(3l).get());
-        admin.setAuthoritiesList(authoritiesRepository.findAll() );
-        participantRepository.save(participant);
-
-*/
-/*
-lls
       User admin = new User("yassine","bouzar",passwordEncoder.encode("password"),"yassine@email.com","6666", true);
 
         admin.setRole(roleRepository.findById(1l).get());

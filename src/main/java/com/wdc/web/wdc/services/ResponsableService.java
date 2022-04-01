@@ -68,7 +68,7 @@ public class ResponsableService {
         responsable.getAuthoritiesList().add(authoritiesRepository.findById(9L).get());
         responsable.getAuthoritiesList().add(authoritiesRepository.findById(10L).get());
         responsable.getAuthoritiesList().add(authoritiesRepository.findById(11L).get());
-        responsable.getAuthoritiesList().add(authoritiesRepository.findById(12L).get());
+        responsable.getAuthoritiesList().add(authoritiesRepository.findById(4L).get());
 
         TypeResponsable typeResponsable = new TypeResponsable();
         typeResponsable.setName(responsableRequest.getTypeResponsable());

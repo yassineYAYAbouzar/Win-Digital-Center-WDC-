@@ -6,9 +6,13 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=WDSDBP
+    volumes:
+      - db-data:/var/lib/postgresql/data
   application:
     build: .
     ports:
       - "8081:8081"
     depends_on:
       - mydb
+volumes:
+  db-data:

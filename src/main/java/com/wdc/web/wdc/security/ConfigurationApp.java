@@ -40,7 +40,9 @@ public class ConfigurationApp extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtTokenVerifier(),JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeHttpRequests()
                 .mvcMatchers("/login").permitAll()
+                .mvcMatchers("/api/v1/auth/**").permitAll()
                 .mvcMatchers("/api/v1/admin/**").hasRole("ADMIN")
+                .mvcMatchers("/api/v1/participant/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated();
     }
