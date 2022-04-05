@@ -13,26 +13,27 @@ public class Activity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "id", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Id
+
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "date_debuit", nullable = false)
+    @Column(name = "date_debuit")
     private Date dateDebuit;
 
-    @Column(name = "date_fin", nullable = false)
+    @Column(name = "date_fin")
     private Date dateFin;
 
     @Column(name = "etat", nullable = false)
     private Boolean etat;
 
-    @Column(name = "id_responsable", nullable = false)
+    @Column(name = "id_responsable")
     private Long idResponsable;
 
-    @Column(name = "id_exercise", nullable = false)
+    @Column(name = "id_exercise")
     private Long idExercise;
 
 
