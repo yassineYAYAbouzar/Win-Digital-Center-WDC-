@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "f92ee0ac-b3dd-4bb1-9685-3538d1fad604",
+		"name": "WDC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "updateResponsable",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiQ1JFQVRFIn0seyJhdXRob3JpdHkiOiJSRUFEIn0seyJhdXRob3JpdHkiOiJVUERBVEUifSx7ImF1dGhvcml0eSI6IkRFTEVURSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ4NTQ1ODUxLCJleHAiOjE2NDk3MjE2MDB9.3hpIXqgGMFnUOFhpRnwTyi1iAVNvHesrDHYiiUz9zMW60ML7lBVQ857kDy8sQSz3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"rabiea\",\n    \"prenom\": \"yassine\",\n    \"email\": \"255@email.com\",\n    \"telephone\": \"6666\",\n    \"etat\": true,\n    \"domaine\":\"domaine\",\n    \"password\":\"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8081/api/v1/admin/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addResponsable",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiQ1JFQVRFIn0seyJhdXRob3JpdHkiOiJSRUFEIn0seyJhdXRob3JpdHkiOiJVUERBVEUifSx7ImF1dGhvcml0eSI6IkRFTEVURSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ4NTQ1ODUxLCJleHAiOjE2NDk3MjE2MDB9.3hpIXqgGMFnUOFhpRnwTyi1iAVNvHesrDHYiiUz9zMW60ML7lBVQ857kDy8sQSz3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"h\",\n    \"prenom\": \"bouzar\",\n    \"typeResponsable\":\"FORMATEUR\",\n    \"email\": \"bouzar@email.com\",\n    \"telephone\": \"6666\",\n    \"etat\": true,\n    \"domaine\":\"domaine\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8081/api/v1/admin/insertResponsable",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"insertResponsable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteResponsable",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiQ1JFQVRFIn0seyJhdXRob3JpdHkiOiJSRUFEIn0seyJhdXRob3JpdHkiOiJVUERBVEUifSx7ImF1dGhvcml0eSI6IkRFTEVURSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ4NTQ1ODUxLCJleHAiOjE2NDk3MjE2MDB9.3hpIXqgGMFnUOFhpRnwTyi1iAVNvHesrDHYiiUz9zMW60ML7lBVQ857kDy8sQSz3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8081/api/v1/admin/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listResponsable",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiQ1JFQVRFIn0seyJhdXRob3JpdHkiOiJSRUFEIn0seyJhdXRob3JpdHkiOiJVUERBVEUifSx7ImF1dGhvcml0eSI6IkRFTEVURSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ4NTQ1ODUxLCJleHAiOjE2NDk3MjE2MDB9.3hpIXqgGMFnUOFhpRnwTyi1iAVNvHesrDHYiiUz9zMW60ML7lBVQ857kDy8sQSz3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8081/api/v1/admin/responsableList",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"responsableList"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listActivity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "updateParticipant",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiQ1JFQVRFIn0seyJhdXRob3JpdHkiOiJSRUFEIn0seyJhdXRob3JpdHkiOiJVUERBVEUifSx7ImF1dGhvcml0eSI6IkRFTEVURSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ4NTQ1ODUxLCJleHAiOjE2NDk3MjE2MDB9.3hpIXqgGMFnUOFhpRnwTyi1iAVNvHesrDHYiiUz9zMW60ML7lBVQ857kDy8sQSz3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"rabiea\",\n    \"prenom\": \"yassine\",\n    \"email\": \"255@email.com\",\n    \"telephone\": \"6666\",\n    \"domaine\":\"domaine\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/participant/1888",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"participant",
+								"1888"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiQ1JFQVRFIn0seyJhdXRob3JpdHkiOiJSRUFEIn0seyJhdXRob3JpdHkiOiJVUERBVEUifSx7ImF1dGhvcml0eSI6IkRFTEVURSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ4NTQ1ODUxLCJleHAiOjE2NDk3MjE2MDB9.3hpIXqgGMFnUOFhpRnwTyi1iAVNvHesrDHYiiUz9zMW60ML7lBVQ857kDy8sQSz3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "responsable",
+			"item": [
+				{
+					"name": "updateActivity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "addActivity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "deleteActivity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "listExercice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "listActivity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "updateParticipant",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiQ1JFQVRFIn0seyJhdXRob3JpdHkiOiJSRUFEIn0seyJhdXRob3JpdHkiOiJVUERBVEUifSx7ImF1dGhvcml0eSI6IkRFTEVURSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ4NTQ1ODUxLCJleHAiOjE2NDk3MjE2MDB9.3hpIXqgGMFnUOFhpRnwTyi1iAVNvHesrDHYiiUz9zMW60ML7lBVQ857kDy8sQSz3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"rabiea\",\n    \"prenom\": \"yassine\",\n    \"email\": \"255@email.com\",\n    \"telephone\": \"6666\",\n    \"domaine\":\"domaine\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8081/api/v1/participant/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"participant",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addExercice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "updateExercice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "deleteExercice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "listParticipant",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiQ1JFQVRFIn0seyJhdXRob3JpdHkiOiJSRUFEIn0seyJhdXRob3JpdHkiOiJVUERBVEUifSx7ImF1dGhvcml0eSI6IkRFTEVURSJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ4NTQ1ODUxLCJleHAiOjE2NDk3MjE2MDB9.3hpIXqgGMFnUOFhpRnwTyi1iAVNvHesrDHYiiUz9zMW60ML7lBVQ857kDy8sQSz3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8081/api/v1/participant/participantList",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"participant",
+								"participantList"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"rabiea\",\n    \"prenom\": \"yassine\",\n    \"email\": \"255@email.com\",\n    \"telephone\": \"6666\",\n    \"domaine\":\"domaine\",\n    \"password\":\"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/auth/responsable/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"responsable",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "participant",
+			"item": [
+				{
+					"name": "participe dans une activity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"rabiea\",\n    \"prenom\": \"yassine\",\n    \"email\": \"255@email.com\",\n    \"telephone\": \"6666\",\n    \"domaine\":\"domaine\",\n    \"password\":\"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/auth/participant/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"participant",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "liste les exercice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "liste les activity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"yassine\",\n    \"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8081/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8081",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nom\": \"jjh\",\n    \"prenom\": \"h\",\n    \"email\": \"bouzar@email.com\",\n    \"telephone\": \"6666\",\n    \"domaine\":\"domaine\",\n    \"password\":\"password\",\n    \"structure\":\"sum\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8081/api/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
