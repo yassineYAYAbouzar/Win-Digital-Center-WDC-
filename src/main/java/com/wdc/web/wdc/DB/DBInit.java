@@ -1,5 +1,8 @@
 package com.wdc.web.wdc.DB;
 
+import com.wdc.web.wdc.entities.Authorities;
+import com.wdc.web.wdc.entities.Role;
+import com.wdc.web.wdc.entities.User;
 import com.wdc.web.wdc.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
