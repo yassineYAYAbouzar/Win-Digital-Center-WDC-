@@ -2,10 +2,7 @@ package com.wdc.web.wdc.entities;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -17,7 +14,7 @@ public class Exercice implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "annee", nullable = false)

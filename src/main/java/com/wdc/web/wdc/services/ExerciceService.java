@@ -46,7 +46,12 @@ public class ExerciceService {
 
     public Exercice createExercice(ExerciceRequest exerciceRequest) {
 
-        Exercice exercice = modelMapper.map(exerciceRequest ,Exercice.class);
+        Exercice exercice = new Exercice();
+
+        exercice.setAnnee(exerciceRequest.getAnnee());
+        exercice.setDateDebuit(exerciceRequest.getDateDebuit());
+        exercice.setDateFin(exerciceRequest.getDateFin());
+        exercice.setStatus(exerciceRequest.getStatus());
 
         exerciceRepository.save(exercice);
 
