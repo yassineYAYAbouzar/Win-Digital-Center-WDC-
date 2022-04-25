@@ -1,4 +1,4 @@
-package com.wdc.web.wdc.provider;
+package com.wdc.web.wdc.security.provider;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -30,7 +30,7 @@ public class CustomUsernamePasswordProvider implements AuthenticationProvider {
 
         UserDetails u = userDetailsService.loadUserByUsername(username);
 
-        if (u == null) {
+        if (u != null) {
             if (passwordEncoder.matches(password, u.getPassword())) {
                 var a = new UsernamePasswordAuthenticationToken(username, password, u.getAuthorities());
                 return a;

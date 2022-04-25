@@ -2,7 +2,7 @@ package com.wdc.web.wdc.security;
 
 import com.wdc.web.wdc.jwt.JwtTokenVerifier;
 import com.wdc.web.wdc.jwt.JwtUsernameAndPasswordAuthenticationFilter;
-import com.wdc.web.wdc.provider.CustomUsernamePasswordProvider;
+import com.wdc.web.wdc.security.provider.CustomUsernamePasswordProvider;
 import com.wdc.web.wdc.services.UserPrincipalService;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
