@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
+/*
 @Component
 public class DBInit implements CommandLineRunner {
 
@@ -32,7 +32,7 @@ public class DBInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-/*
+
         authoritiesRepository.save(new Authorities("CREATE_RESPONSABLE"));
         authoritiesRepository.save(new Authorities("UPDATE_RESPONSABLE"));
         authoritiesRepository.save(new Authorities("READ_ACTIVITY"));
@@ -60,8 +60,9 @@ public class DBInit implements CommandLineRunner {
         admin.getAuthoritiesList().add(authoritiesRepository.findById(5L).get());
         admin.getAuthoritiesList().add(authoritiesRepository.findById(6L).get());
         userRepository.save(admin);
-*/
+
     }
 
 
 }
+*/

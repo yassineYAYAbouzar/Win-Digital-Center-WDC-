@@ -29,10 +29,8 @@ public class AppExceptionHandler {
     }
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public ResponseEntity<Object> methodArgumentNotValidException(MethodArgumentNotValidException ex , WebRequest request){
-
         Map<String, String> errorMessages = new HashMap<>();
         ex.getBindingResult().getFieldErrors().forEach(errr ->errorMessages.put(errr.getField(), errr.getDefaultMessage()));
-
         return new ResponseEntity<>(errorMessages, HttpStatus.BAD_REQUEST);
     }
 }

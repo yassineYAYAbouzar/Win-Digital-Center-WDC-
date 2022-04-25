@@ -2,12 +2,11 @@ package com.wdc.web.wdc.security;
 
 import com.wdc.web.wdc.jwt.JwtTokenVerifier;
 import com.wdc.web.wdc.jwt.JwtUsernameAndPasswordAuthenticationFilter;
+import com.wdc.web.wdc.provider.CustomUsernamePasswordProvider;
 import com.wdc.web.wdc.services.UserPrincipalService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,16 +18,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class ConfigurationApp extends WebSecurityConfigurerAdapter {
-    private UserPrincipalService userPrincipalService;
-
-    public ConfigurationApp(UserPrincipalService userPrincipalService) {
+    private final UserPrincipalService userPrincipalService;
+    private final CustomUsernamePasswordProvider customUsernamePasswordProvider;
+    public ConfigurationApp(UserPrincipalService userPrincipalService, CustomUsernamePasswordProvider customUsernamePasswordProvider) {
         this.userPrincipalService = userPrincipalService;
+        this.customUsernamePasswordProvider = customUsernamePasswordProvider;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.
-                authenticationProvider(authenticationProvider());
+                authenticationProvider(customUsernamePasswordProvider);
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -36,7 +36,7 @@ public class ConfigurationApp extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter( userPrincipalService,authenticationManager() ))
                 .addFilterAfter(new JwtTokenVerifier(),JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeHttpRequests()
                 .mvcMatchers("/login").permitAll()
@@ -56,12 +56,6 @@ public class ConfigurationApp extends WebSecurityConfigurerAdapter {
         return new ModelMapper();
     }
 
-    @Bean
-    DaoAuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider daoAuthenticationProvider =
-                new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(userPrincipalService);
-        return daoAuthenticationProvider;
-    }
+
+
 }
