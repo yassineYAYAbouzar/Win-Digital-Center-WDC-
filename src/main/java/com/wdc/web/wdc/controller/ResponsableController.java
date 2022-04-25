@@ -78,20 +78,20 @@ public class ResponsableController {
         return new ResponseEntity<ExerciceResponse>( exerciceResponse , HttpStatus.CREATED) ;
     }
 
-    @DeleteMapping(path = "/{activityId}")
+    @DeleteMapping(path = "/activity/{activityId}")
     public ResponseEntity<Object> deletActivity(@PathVariable Long activityId ){
         activityService.deletActivity(activityId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(path = "/{exerciceId}")
+    @DeleteMapping(path = "/exercice/{exerciceId}")
     public ResponseEntity<Object> deletExercice(@PathVariable Long exerciceId ){
         exerciceService.deletExercice(exerciceId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
-    @PatchMapping(path = "/{activityId}")
+    @PatchMapping(path = "/activity/{activityId}")
     public ResponseEntity<ActivityResponse> updateActivity(@PathVariable Long activityId , @RequestBody ActivityRequest activityRequest){
 
 
@@ -100,7 +100,7 @@ public class ResponsableController {
         return new ResponseEntity<ActivityResponse>( activityResponse , HttpStatus.ACCEPTED) ;
     }
 
-    @PatchMapping(path = "/{exerciceId}")
+    @PatchMapping(path = "/exercice/{exerciceId}")
     public ResponseEntity<ExerciceResponse> updateExercice(@PathVariable Long exerciceId , @RequestBody ExerciceRequest exerciceRequest){
 
 

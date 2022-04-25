@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ExerciceRepository extends JpaRepository<Exercice, Long>, JpaSpecificationExecutor<Exercice> {
+public interface ExerciceRepository extends JpaRepository<Exercice, Long>{
 
 }

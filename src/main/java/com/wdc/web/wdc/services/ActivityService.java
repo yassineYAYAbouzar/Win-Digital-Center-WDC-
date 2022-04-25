@@ -62,14 +62,14 @@ public class ActivityService {
     }
 
     public void deletActivity(Long activityId) {
-        Activity activity = activityRepository.findById(String.valueOf(activityId)).get();
+        Activity activity = activityRepository.findById(activityId).get();
         if(activity == null) throw new RuntimeException("activity Not Found ");
         activityRepository.delete(activity);
     }
 
     public Activity updateActivity(Long activityId, ActivityRequest activityRequest) {
 
-        Activity activity = activityRepository.findById(String.valueOf(activityId)).get();
+        Activity activity = activityRepository.findById(activityId).get();
         if(activity == null) throw new RuntimeException("activity Not Found ");
 
         activity.setDescription(activityRequest.getDescription());
