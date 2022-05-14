@@ -2,15 +2,14 @@ package com.wdc.web.wdc.services;
 
 import com.wdc.web.wdc.Request.ActivityRequest;
 import com.wdc.web.wdc.entities.Activity;
-import com.wdc.web.wdc.entities.Responsable;
 import com.wdc.web.wdc.entities.TypeActivity;
 import com.wdc.web.wdc.repositories.ActivityRepository;
+import com.wdc.web.wdc.repositories.TypeActivityRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import javax.enterprise.inject.New;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,9 +18,11 @@ import java.util.Optional;
 public class ActivityService {
 
     private final ActivityRepository activityRepository;
+    private final TypeActivityRepository typeActivityRepository;
     private final ModelMapper modelMapper;
-    public ActivityService(ActivityRepository activityRepository, ModelMapper modelMapper) {
+    public ActivityService(ActivityRepository activityRepository, TypeActivityRepository typeActivityRepository, ModelMapper modelMapper) {
         this.activityRepository = activityRepository;
+        this.typeActivityRepository = typeActivityRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -49,17 +50,15 @@ public class ActivityService {
     }
 
     public Activity createActivity(ActivityRequest activityRequest) {
-
         Activity activity = new Activity() ;
-
-        TypeActivity typeActivity = new TypeActivity();
-        typeActivity.setName(activityRequest.getTypeActivity());
         activity.setEtat(activityRequest.getEtat());
+        activity.setIdResponsable(activityRequest.getIdResponsable());
+        activity.setIdExercise(activityRequest.getIdExercise());
+        activity.setDateDebuit(activityRequest.getDateDebuit());
+        activity.setDateFin(activityRequest.getDateFin());
         activity.setDescription(activityRequest.getDescription());
-
-        activity.setIdTypeActivity(typeActivity);
+        activity.setIdTypeActivity(findTypeById(activityRequest.getTypeActivity()));
         activityRepository.save(activity);
-
         return activity;
     }
 
@@ -88,5 +87,7 @@ public class ActivityService {
         return activityRepository
                 .findById(responsableId);
     }
-
+    public TypeActivity findTypeById(Long id) {
+        return typeActivityRepository.findById(id).get();
+    }
 }

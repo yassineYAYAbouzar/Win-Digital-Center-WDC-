@@ -2,6 +2,7 @@ package com.wdc.web.wdc.controller;
 
 import com.wdc.web.wdc.Request.ResponsableRequest;
 import com.wdc.web.wdc.entities.Responsable;
+import com.wdc.web.wdc.exceptions.UserException;
 import com.wdc.web.wdc.exceptions.UserNotFound;
 import com.wdc.web.wdc.response.ResponsableResponse;
 import com.wdc.web.wdc.services.ResponsableService;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,17 +42,17 @@ public class AdminController {
 
         responsableList.forEach(responsable -> {
             ResponsableResponse response= modelMapper.map(responsable ,ResponsableResponse.class);
-
+            response.setTypeResponsable(responsable.getIdTypeResponsable().getName());
             responsableResponses.add(response);
         });
 
         return responsableResponses;
     }
 
-    @PostMapping("insertResponsable")
+    @PostMapping("")
     public ResponseEntity<ResponsableResponse> createUser(@RequestBody @Valid ResponsableRequest responsableRequest) throws Exception {
         ResponsableResponse responsableResponse = modelMapper.map(responsableService.createResponsable(responsableRequest) ,ResponsableResponse.class);
-        responsableResponse.setTypeResponsable(responsableRequest.getTypeResponsable());
+        responsableResponse.setTypeResponsable(responsableService.findTYpeById(responsableRequest.getTypeResponsable()).getName());
         return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.CREATED) ;
     }
 
@@ -61,7 +63,7 @@ public class AdminController {
     }
 
 
-    @PatchMapping(path = "/{responsableId}")
+    @PutMapping(path = "/{responsableId}")
     public ResponseEntity<ResponsableResponse> updateResponsable(@PathVariable Long responsableId , @RequestBody ResponsableRequest responsableRequest){
 
 

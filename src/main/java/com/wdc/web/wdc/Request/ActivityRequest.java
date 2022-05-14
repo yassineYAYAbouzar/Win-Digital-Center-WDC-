@@ -16,6 +16,6 @@ public class ActivityRequest {
     private Boolean etat;
     private Long idResponsable;
     private Long idExercise;
-    private String typeActivity;
+    private Long typeActivity;
 
 }

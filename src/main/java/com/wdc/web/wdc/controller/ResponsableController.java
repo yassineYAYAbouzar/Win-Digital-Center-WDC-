@@ -44,8 +44,9 @@ public class ResponsableController {
         List<Activity> activityList = activityService.getAllActivity( page , limit);
 
         activityList.forEach(activity -> {
-            ActivityResponse response = modelMapper.map(activity ,ActivityResponse.class);
 
+            ActivityResponse response = modelMapper.map(activity ,ActivityResponse.class);
+            response.setIdTypeActivity(activity.getIdTypeActivity().getName());
             activityResponse.add(response);
         });
 
@@ -71,6 +72,7 @@ public class ResponsableController {
     @PostMapping("/activity")
     public ResponseEntity<ActivityResponse> createActivity (@RequestBody ActivityRequest activityRequest) throws Exception {
         ActivityResponse activityResponse = modelMapper.map(activityService.createActivity(activityRequest) ,ActivityResponse.class);
+        activityResponse.setIdTypeActivity(activityService.findTypeById(activityRequest.getTypeActivity()).getName());
         return new ResponseEntity<ActivityResponse>( activityResponse , HttpStatus.CREATED) ;
     }
 

@@ -43,7 +43,12 @@ public class ResponsableService {
         Responsable responsable = responsableRepository.findById(responsableId).get();
         if(responsable == null) throw new RuntimeException("responsable Not Found ");
 
-        responsable.setNom(responsableRequest.getNom());
+        if (responsableRequest.getNom() != null) {
+            responsable.setNom(responsableRequest.getNom());
+        } else {
+            responsable.setNom(responsable.getNom());
+        }
+        responsable.setTelephone(responsable.getTelephone());
         responsable.setPrenom(responsableRequest.getPrenom());
         responsable.setPassword(passwordEncoder.encode(responsableRequest.getPassword()));
         responsable.setDomaine(responsableRequest.getDomaine());
@@ -87,10 +92,7 @@ public class ResponsableService {
         responsable.getAuthoritiesList().add(authoritiesRepository.findById(10L).get());
         responsable.getAuthoritiesList().add(authoritiesRepository.findById(11L).get());
         responsable.getAuthoritiesList().add(authoritiesRepository.findById(4L).get());
-
-        TypeResponsable typeResponsable = new TypeResponsable();
-        typeResponsable.setName(responsableRequest.getTypeResponsable());
-        responsable.setIdTypeResponsable(typeResponsable);
+        responsable.setIdTypeResponsable(findTYpeById(responsableRequest.getTypeResponsable()));
 
         responsable.setRole(roleRepository.findById(2l).get());
         responsableRepository.save(responsable);
@@ -104,7 +106,7 @@ public class ResponsableService {
     }
 
 
-
-
-
+    public TypeResponsable findTYpeById(Long id) {
+            return typeResponsableRepository.findById(id).get();
+        }
 }

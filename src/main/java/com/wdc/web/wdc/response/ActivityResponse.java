@@ -1,6 +1,5 @@
 package com.wdc.web.wdc.response;
 
-import com.wdc.web.wdc.entities.TypeActivity;
 import lombok.*;
 
 import java.sql.Date;

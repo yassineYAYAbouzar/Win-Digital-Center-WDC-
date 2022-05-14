@@ -2,7 +2,7 @@ package com.wdc.web.wdc.Request;
 
 import lombok.*;
 
-import javax.validation.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,8 +13,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @ToString
 public class ResponsableRequest {
-    @NotNull
-    @Size(min =3)
+
     private String nom;
     @NotNull
     @Size(min =3)
@@ -23,6 +22,7 @@ public class ResponsableRequest {
     @Size(min = 8 , max=12)
     private String password;
     @NotNull
+    @Email
     private String email;
     @NotNull
     @Size(min = 8 , max=12)
@@ -34,5 +34,5 @@ public class ResponsableRequest {
     @NotNull
     @Size(min =3)
     private String structure;
-    private String typeResponsable;
+    private Long typeResponsable;
 }
