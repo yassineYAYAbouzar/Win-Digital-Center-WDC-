@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ParticipantService {
@@ -32,6 +33,8 @@ public class ParticipantService {
         this.authoritiesRepository = authoritiesRepository;
         this.typeResponsableRepository = typeResponsableRepository;
     }
+
+
     public List<Participant> getAllParticipant(int page, int limit) {
 
 
@@ -80,7 +83,10 @@ public class ParticipantService {
         if(participant == null) throw new RuntimeException("participant Not Found ");
         participantRepository.delete(participant);
     }
-
+    public Optional<Participant> fetchParticipant(Long participantId) {
+        return participantRepository
+                .findById(participantId);
+    }
 
     public Participant updateParticipant(Long participantId, ParticipantRequest participantRequest) {
 

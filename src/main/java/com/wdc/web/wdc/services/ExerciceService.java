@@ -1,5 +1,6 @@
 package com.wdc.web.wdc.services;
 
+import com.wdc.web.wdc.entities.Activity;
 import com.wdc.web.wdc.entities.Exercice;
 import com.wdc.web.wdc.Request.ExerciceRequest;
 import com.wdc.web.wdc.repositories.ExerciceRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExerciceService {
@@ -76,5 +78,9 @@ public class ExerciceService {
         exercice.setStatus(exerciceRequest.getStatus());
 
         return exerciceRepository.save(exercice);
+    }
+    public Optional<Exercice> fetchExercie(Long exerciceId) {
+        return exerciceRepository
+                .findById(exerciceId);
     }
 }

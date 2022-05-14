@@ -2,6 +2,7 @@ package com.wdc.web.wdc.services;
 
 import com.wdc.web.wdc.Request.ActivityRequest;
 import com.wdc.web.wdc.entities.Activity;
+import com.wdc.web.wdc.entities.Responsable;
 import com.wdc.web.wdc.entities.TypeActivity;
 import com.wdc.web.wdc.repositories.ActivityRepository;
 import org.modelmapper.ModelMapper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.enterprise.inject.New;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ActivityService {
@@ -81,6 +83,10 @@ public class ActivityService {
         //activity.setIdTypeActivity(activityRequest.getIdTypeActivity());
 
         return activityRepository.save(activity);
+    }
+    public Optional<Activity> fetchActivity(Long responsableId) {
+        return activityRepository
+                .findById(responsableId);
     }
 
 }

@@ -12,6 +12,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @ToString
 public class ActivityResponse {
+    private Long id;
     private String description;
     private Date dateDebuit;
     private Date dateFin;

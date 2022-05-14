@@ -9,6 +9,7 @@ import javax.persistence.Column;
 @NoArgsConstructor
 @ToString
 public class ResponsableResponse {
+    private Long id;
     private String nom;
 
     private String prenom;

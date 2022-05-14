@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class ParticipantResponse {
+    private Long id;
     private String nom;
 
     private String prenom;

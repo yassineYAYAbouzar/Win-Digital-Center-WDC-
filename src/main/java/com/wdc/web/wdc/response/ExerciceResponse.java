@@ -10,6 +10,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @ToString
 public class ExerciceResponse {
+    private Long id;
     private Date annee;
     private Date dateDebuit;
     private Date dateFin;

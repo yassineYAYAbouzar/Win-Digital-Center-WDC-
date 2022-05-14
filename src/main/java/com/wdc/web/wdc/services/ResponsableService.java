@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ResponsableService {
@@ -33,6 +34,23 @@ public class ResponsableService {
         this.authoritiesRepository = authoritiesRepository;
         this.typeResponsableRepository = typeResponsableRepository;
     }
+    public Optional<Responsable> fetchResponsable(Long responsableId) {
+        return responsableRepository
+                .findById(responsableId);
+    }
+    public Responsable updateUser(Long responsableId, ResponsableRequest responsableRequest) {
+
+        Responsable responsable = responsableRepository.findById(responsableId).get();
+        if(responsable == null) throw new RuntimeException("responsable Not Found ");
+
+        responsable.setNom(responsableRequest.getNom());
+        responsable.setPrenom(responsableRequest.getPrenom());
+        responsable.setPassword(passwordEncoder.encode(responsableRequest.getPassword()));
+        responsable.setDomaine(responsableRequest.getDomaine());
+        responsable.setEmail(responsableRequest.getEmail());
+        return responsableRepository.save(responsable);
+    }
+
     public List<Responsable> getAllResponsable(int page, int limit) {
 
 
@@ -86,18 +104,6 @@ public class ResponsableService {
     }
 
 
-    public Responsable updateUser(Long responsableId, ResponsableRequest responsableRequest) {
-
-        Responsable responsable = responsableRepository.findById(responsableId).get();
-        if(responsable == null) throw new RuntimeException("responsable Not Found ");
-
-        responsable.setNom(responsableRequest.getNom());
-        responsable.setPrenom(responsableRequest.getPrenom());
-        responsable.setPassword(passwordEncoder.encode(responsableRequest.getPassword()));
-        responsable.setDomaine(responsableRequest.getDomaine());
-        responsable.setEmail(responsableRequest.getEmail());
-        return responsableRepository.save(responsable);
-    }
 
 
 

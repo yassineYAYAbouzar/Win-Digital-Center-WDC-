@@ -4,6 +4,7 @@ import com.wdc.web.wdc.Request.ParticipantRequest;
 import com.wdc.web.wdc.Request.ResponsableRequest;
 import com.wdc.web.wdc.entities.Participant;
 import com.wdc.web.wdc.entities.Responsable;
+import com.wdc.web.wdc.exceptions.UserNotFound;
 import com.wdc.web.wdc.repositories.ParticipantRepository;
 import com.wdc.web.wdc.response.ParticipantResponse;
 import com.wdc.web.wdc.response.ResponsableResponse;
@@ -70,6 +71,18 @@ public class ParticipantController {
         ParticipantResponse participantResponse  = modelMapper.map(participantService.updateParticipant(participantId,participantRequest) ,ParticipantResponse.class);
 
         return new ResponseEntity<ParticipantResponse>( participantResponse , HttpStatus.ACCEPTED) ;
+    }
+
+
+    @GetMapping(path = "/{participantId}")
+    public ResponseEntity<?> getParticipant(@PathVariable Long participantId ){
+
+        ParticipantResponse participantResponse  = modelMapper.map(participantService.fetchParticipant(participantId).get() ,ParticipantResponse.class);
+
+        if(participantService.fetchParticipant(participantId).isPresent()){
+            return new ResponseEntity<ParticipantResponse>( participantResponse , HttpStatus.OK) ;
+        }
+        return ResponseEntity.badRequest().body(new UserNotFound("Participant  Was Not Found ." ,HttpStatus.NOT_FOUND));
     }
 
 }

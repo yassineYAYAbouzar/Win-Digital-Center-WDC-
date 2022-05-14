@@ -2,6 +2,7 @@ package com.wdc.web.wdc.controller;
 
 import com.wdc.web.wdc.Request.ResponsableRequest;
 import com.wdc.web.wdc.entities.Responsable;
+import com.wdc.web.wdc.exceptions.UserNotFound;
 import com.wdc.web.wdc.response.ResponsableResponse;
 import com.wdc.web.wdc.services.ResponsableService;
 import org.modelmapper.ModelMapper;
@@ -67,6 +68,16 @@ public class AdminController {
         ResponsableResponse responsableResponse  = modelMapper.map(responsableService.updateUser(responsableId,responsableRequest) ,ResponsableResponse.class);
 
         return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.ACCEPTED) ;
+    }
+    @GetMapping(path = "/{responsableId}")
+    public ResponseEntity<?> getResponsable(@PathVariable Long responsableId ){
+
+        ResponsableResponse responsableResponse  = modelMapper.map(responsableService.fetchResponsable(responsableId).get() ,ResponsableResponse.class);
+
+        if(responsableService.fetchResponsable(responsableId).isPresent()){
+            return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.OK) ;
+        }
+        return ResponseEntity.badRequest().body(new UserNotFound("Responsable  Was Not Found ." ,HttpStatus.NOT_FOUND));
     }
 
 }
