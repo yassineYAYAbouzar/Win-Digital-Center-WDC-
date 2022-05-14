@@ -3,6 +3,7 @@ package com.wdc.web.wdc.services;
 import com.wdc.web.wdc.Request.ResponsableRequest;
 import com.wdc.web.wdc.entities.Responsable;
 import com.wdc.web.wdc.entities.TypeResponsable;
+import com.wdc.web.wdc.exceptions.UserNotFound;
 import com.wdc.web.wdc.repositories.AuthoritiesRepository;
 import com.wdc.web.wdc.repositories.ResponsableRepository;
 import com.wdc.web.wdc.repositories.RoleRepository;
@@ -10,6 +11,7 @@ import com.wdc.web.wdc.repositories.TypeResponsableRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -99,9 +101,8 @@ public class ResponsableService {
 
         return responsable;
     }
-    public void deletResponsable(Long responsableId) {
-        Responsable responsable = responsableRepository.findById(responsableId).get();
-        if(responsable == null) throw new RuntimeException("responsable Not Found ");
+    public void deletResponsable(Long responsableId) throws UserNotFound {
+        Responsable responsable =  responsableRepository.findById(responsableId).orElseThrow( ()->  new UserNotFound("responsable Not Found ", HttpStatus.NOT_FOUND));
         responsableRepository.delete(responsable);
     }
 

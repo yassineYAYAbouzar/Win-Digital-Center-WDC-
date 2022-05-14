@@ -1,7 +1,7 @@
 package com.wdc.web.wdc.exceptions;
 import org.springframework.http.HttpStatus;
 
-public class UserNotFound {
+public class UserNotFound  extends Exception{
     private final String message;
     private final HttpStatus status;
 

@@ -57,9 +57,14 @@ public class AdminController {
     }
 
     @DeleteMapping(path = "/{responsableId}")
-    public ResponseEntity<Object> deletUser(@PathVariable Long responsableId ){
-        responsableService.deletResponsable(responsableId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Object> deletUser(@PathVariable Long responsableId ) throws UserPrincipalNotFoundException{
+        try {
+            responsableService.deletResponsable(responsableId);
+        } catch (UserNotFound e) {
+             new UserNotFound("responsable Not Found ", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
     }
 
 
