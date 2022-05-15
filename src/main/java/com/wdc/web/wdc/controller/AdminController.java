@@ -49,6 +49,11 @@ public class AdminController {
         return responsableResponses;
     }
 
+
+
+
+
+
     @PostMapping("")
     public ResponseEntity<ResponsableResponse> createUser(@RequestBody @Valid ResponsableRequest responsableRequest) throws Exception {
         ResponsableResponse responsableResponse = modelMapper.map(responsableService.createResponsable(responsableRequest) ,ResponsableResponse.class);
@@ -56,26 +61,37 @@ public class AdminController {
         return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.CREATED) ;
     }
 
+
+
+    @PatchMapping(path = "/{responsableId}")
+    public ResponseEntity<ResponsableResponse> updateResponsable(@PathVariable Long responsableId , @RequestBody ResponsableRequest responsableRequest) throws Exception{
+        ResponsableResponse responsableResponse  = modelMapper.map(responsableService.updateUser(responsableId,responsableRequest) ,ResponsableResponse.class);
+        return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.ACCEPTED) ;
+    }
+
+
+
+
+
+
+
+
+
     @DeleteMapping(path = "/{responsableId}")
     public ResponseEntity<Object> deletUser(@PathVariable Long responsableId ) throws UserPrincipalNotFoundException{
         try {
             responsableService.deletResponsable(responsableId);
         } catch (UserNotFound e) {
-             new UserNotFound("responsable Not Found ", HttpStatus.NOT_FOUND);
+            new UserNotFound("responsable Not Found ", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
 
 
-    @PutMapping(path = "/{responsableId}")
-    public ResponseEntity<ResponsableResponse> updateResponsable(@PathVariable Long responsableId , @RequestBody ResponsableRequest responsableRequest){
 
 
-        ResponsableResponse responsableResponse  = modelMapper.map(responsableService.updateUser(responsableId,responsableRequest) ,ResponsableResponse.class);
 
-        return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.ACCEPTED) ;
-    }
     @GetMapping(path = "/{responsableId}")
     public ResponseEntity<?> getResponsable(@PathVariable Long responsableId ){
 

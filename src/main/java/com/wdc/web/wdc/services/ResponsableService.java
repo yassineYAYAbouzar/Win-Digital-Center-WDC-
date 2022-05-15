@@ -50,38 +50,38 @@ public class ResponsableService {
         } else {
             responsable.setNom(responsable.getNom());
         }
-        responsable.setTelephone(responsable.getTelephone());
-        responsable.setPrenom(responsableRequest.getPrenom());
-        responsable.setPassword(passwordEncoder.encode(responsableRequest.getPassword()));
-        responsable.setDomaine(responsableRequest.getDomaine());
-        responsable.setEmail(responsableRequest.getEmail());
+
+        if (responsableRequest.getEmail() != null) {
+            responsable.setEmail(responsableRequest.getEmail());
+        } else {
+            responsable.setEmail(responsable.getEmail());
+        }
+
+        if (responsableRequest.getDomaine() != null) {
+            responsable.setDomaine(responsableRequest.getDomaine());
+        } else {
+            responsable.setDomaine(responsable.getDomaine());
+        }
+
+        if (responsableRequest.getPassword() != null) {
+            responsable.setPassword(passwordEncoder.encode(responsableRequest.getPassword()));
+        } else {
+            responsable.setPassword(responsable.getNom());
+
+        }
+
+        if (responsableRequest.getPrenom() != null) {
+            responsable.setPrenom(responsableRequest.getPrenom());
+        } else {
+            responsable.setPrenom(responsable.getPrenom());
+        }
+        if (responsableRequest.getTelephone() != null) {
+            responsable.setTelephone(responsableRequest.getTelephone());
+        } else {
+            responsable.setTelephone(responsable.getTelephone());
+        }
         return responsableRepository.save(responsable);
     }
-
-    public List<Responsable> getAllResponsable(int page, int limit) {
-
-
-        if(page > 0 ) page -= 1;
-
-        List<Responsable> responsableList = new ArrayList<>();
-
-        PageRequest pagebleRequest = PageRequest.of(page,limit);
-
-        Page<Responsable> responsableEntityPage = responsableRepository.findAll(pagebleRequest);
-        List<Responsable> responsableEntityList = responsableEntityPage.getContent();
-
-        responsableEntityList.forEach(eachResponsable -> {
-            Responsable responsable = modelMapper.map(eachResponsable ,Responsable.class);
-
-            responsableList.add(responsable);
-        });
-
-
-
-        return responsableList;
-    }
-
-
     public Responsable createResponsable(ResponsableRequest responsableRequest) {
 
         Responsable responsable = modelMapper.map(responsableRequest ,Responsable.class);
@@ -106,6 +106,29 @@ public class ResponsableService {
         responsableRepository.delete(responsable);
     }
 
+
+    public List<Responsable> getAllResponsable(int page, int limit) {
+
+
+        if(page > 0 ) page -= 1;
+
+        List<Responsable> responsableList = new ArrayList<>();
+
+        PageRequest pagebleRequest = PageRequest.of(page,limit);
+
+        Page<Responsable> responsableEntityPage = responsableRepository.findAll(pagebleRequest);
+        List<Responsable> responsableEntityList = responsableEntityPage.getContent();
+
+        responsableEntityList.forEach(eachResponsable -> {
+            Responsable responsable = modelMapper.map(eachResponsable ,Responsable.class);
+
+            responsableList.add(responsable);
+        });
+
+
+
+        return responsableList;
+    }
 
     public TypeResponsable findTYpeById(Long id) {
             return typeResponsableRepository.findById(id).get();
