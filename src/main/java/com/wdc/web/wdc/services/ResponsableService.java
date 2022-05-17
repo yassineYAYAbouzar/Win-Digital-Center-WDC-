@@ -45,41 +45,18 @@ public class ResponsableService {
         Responsable responsable = responsableRepository.findById(responsableId).get();
         if(responsable == null) throw new RuntimeException("responsable Not Found ");
 
-        if (responsableRequest.getNom() != null) {
             responsable.setNom(responsableRequest.getNom());
-        } else {
-            responsable.setNom(responsable.getNom());
-        }
 
-        if (responsableRequest.getEmail() != null) {
             responsable.setEmail(responsableRequest.getEmail());
-        } else {
-            responsable.setEmail(responsable.getEmail());
-        }
 
-        if (responsableRequest.getDomaine() != null) {
             responsable.setDomaine(responsableRequest.getDomaine());
-        } else {
-            responsable.setDomaine(responsable.getDomaine());
-        }
 
-        if (responsableRequest.getPassword() != null) {
             responsable.setPassword(passwordEncoder.encode(responsableRequest.getPassword()));
-        } else {
-            responsable.setPassword(responsable.getNom());
 
-        }
 
-        if (responsableRequest.getPrenom() != null) {
             responsable.setPrenom(responsableRequest.getPrenom());
-        } else {
-            responsable.setPrenom(responsable.getPrenom());
-        }
-        if (responsableRequest.getTelephone() != null) {
             responsable.setTelephone(responsableRequest.getTelephone());
-        } else {
-            responsable.setTelephone(responsable.getTelephone());
-        }
+
         return responsableRepository.save(responsable);
     }
     public Responsable createResponsable(ResponsableRequest responsableRequest) {
@@ -132,5 +109,5 @@ public class ResponsableService {
 
     public TypeResponsable findTYpeById(Long id) {
             return typeResponsableRepository.findById(id).get();
-        }
+    }
 }

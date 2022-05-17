@@ -17,7 +17,7 @@ public class Responsable extends User implements Serializable {
     private String domaine;
 
 
-    @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH ,fetch = FetchType.EAGER)
     private TypeResponsable idTypeResponsable;
 
     public Responsable(String nom, String prenom, String password, String email, String telephone, Boolean etat) {

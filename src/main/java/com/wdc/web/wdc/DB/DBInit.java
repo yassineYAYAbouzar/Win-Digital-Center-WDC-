@@ -1,8 +1,6 @@
 package com.wdc.web.wdc.DB;
 
-import com.wdc.web.wdc.entities.Authorities;
-import com.wdc.web.wdc.entities.Role;
-import com.wdc.web.wdc.entities.User;
+import com.wdc.web.wdc.entities.*;
 import com.wdc.web.wdc.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,15 +16,19 @@ public class DBInit implements CommandLineRunner {
     private final ResponsableRepository responsableRepository;
     private final ParticipantRepository participantRepository;
     private final AuthoritiesRepository authoritiesRepository;
+    private final TypeResponsableRepository typeResponsableRepository;
+    private final TypeActivityRepository typeActivityRepository;
 
     @Autowired
-    public DBInit(PasswordEncoder passwordEncoder, UserRepository userRepository, RoleRepository roleRepository, ResponsableRepository responsableRepository, ParticipantRepository participantRepository, AuthoritiesRepository authoritiesRepository) {
+    public DBInit(PasswordEncoder passwordEncoder, UserRepository userRepository, RoleRepository roleRepository, ResponsableRepository responsableRepository, ParticipantRepository participantRepository, AuthoritiesRepository authoritiesRepository, TypeResponsableRepository typeResponsableRepository, TypeActivityRepository typeActivityRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.responsableRepository = responsableRepository;
         this.participantRepository = participantRepository;
         this.authoritiesRepository = authoritiesRepository;
+        this.typeResponsableRepository = typeResponsableRepository;
+        this.typeActivityRepository = typeActivityRepository;
     }
 
     @Override
@@ -51,6 +53,11 @@ public class DBInit implements CommandLineRunner {
         roleRepository.save(new Role("PARTICIPANT","PARTICIPANT",true));
 
       User admin = new User("yassine","bouzar",passwordEncoder.encode("password"),"yassine@email.com","6666", true);
+        TypeResponsable typeResponsable = new TypeResponsable("FORMATEUR");
+        typeResponsableRepository.save(typeResponsable);
+
+        TypeActivity typeActivity = new TypeActivity("INTERVONTION");
+        typeActivityRepository.save(typeActivity);
 
         admin.setRole(roleRepository.findById(1l).get());
         admin.getAuthoritiesList().add(authoritiesRepository.findById(1L).get());
@@ -67,4 +74,6 @@ public class DBInit implements CommandLineRunner {
 
 
 }
+
+
  */

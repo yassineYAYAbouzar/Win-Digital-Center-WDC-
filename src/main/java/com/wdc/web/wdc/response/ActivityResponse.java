@@ -16,7 +16,7 @@ public class ActivityResponse {
     private Date dateDebuit;
     private Date dateFin;
     private Boolean etat;
-    private Long idResponsable;
-    private Long idExercise;
+    private String idResponsable;
+    private String idExercise;
     private String idTypeActivity;
 }

@@ -57,7 +57,7 @@ public class AdminController {
     @PostMapping("")
     public ResponseEntity<ResponsableResponse> createUser(@RequestBody @Valid ResponsableRequest responsableRequest) throws Exception {
         ResponsableResponse responsableResponse = modelMapper.map(responsableService.createResponsable(responsableRequest) ,ResponsableResponse.class);
-        responsableResponse.setTypeResponsable(responsableService.findTYpeById(responsableRequest.getTypeResponsable()).getName());
+       responsableResponse.setTypeResponsable(responsableService.findTYpeById(responsableRequest.getTypeResponsable()).getName());
         return new ResponseEntity<ResponsableResponse>( responsableResponse , HttpStatus.CREATED) ;
     }
 
@@ -84,7 +84,7 @@ public class AdminController {
         } catch (UserNotFound e) {
             new UserNotFound("responsable Not Found ", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
 

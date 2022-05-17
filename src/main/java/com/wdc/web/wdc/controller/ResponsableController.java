@@ -7,9 +7,9 @@ import com.wdc.web.wdc.entities.Exercice;
 import com.wdc.web.wdc.exceptions.UserNotFound;
 import com.wdc.web.wdc.response.ActivityResponse;
 import com.wdc.web.wdc.response.ExerciceResponse;
-import com.wdc.web.wdc.response.ResponsableResponse;
 import com.wdc.web.wdc.services.ActivityService;
 import com.wdc.web.wdc.services.ExerciceService;
+import com.wdc.web.wdc.services.ResponsableService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,12 +27,13 @@ public class ResponsableController {
     private final ActivityService activityService;
     private final ExerciceService exerciceService;
     private final ModelMapper modelMapper;
-
+    private final ResponsableService responsableService;
     @Autowired
-    public ResponsableController(ActivityService activityService, ExerciceService exerciceService, ModelMapper modelMapper) {
+    public ResponsableController(ActivityService activityService, ExerciceService exerciceService, ModelMapper modelMapper, ResponsableService responsableService) {
         this.activityService = activityService;
         this.exerciceService = exerciceService;
         this.modelMapper = modelMapper;
+        this.responsableService = responsableService;
     }
 
 
